@@ -1,13 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;800&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Raleway', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding:1.3rem;
+  background-color: #2e3a53;
+  color: #ffffff
+}
+
+.logotype{
+  display:flex;
+}
+
+.wordmark{
+  font-weight:800;
+}
+
+.search-form{
+  width:40%;
+  display: flex;
+  padding:0.2rem;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 2rem 2rem;
+  border:none;
+}
+
+.search-icon{
+  color:#2e3a53;
+  margin:0rem 0.1rem 0rem 0.4rem;
+}
+
+.search-input{
+  border: none;
+  background: none;
+  width:100%;
+  padding: 0.4rem;
 }
