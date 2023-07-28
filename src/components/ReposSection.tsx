@@ -1,6 +1,8 @@
-type Props = {}
+type Props = {
+  repos:[]
+}
 
-const ReposSection = (props: Props) => {
+const ReposSection = ({repos}: Props) => {
   return (
     <section>ReposSection</section>
   )

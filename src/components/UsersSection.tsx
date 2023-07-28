@@ -1,10 +1,11 @@
 import UserCard from "./UserCard"
 
 type Props = {
-    headerTitle:string
+    headerTitle:string,
+    users:[]
 }
 
-const UsersSection = ({headerTitle}: Props) => {
+const UsersSection = ({headerTitle, users}: Props) => {
     return (
         <section>
             <header>{headerTitle}</header>
