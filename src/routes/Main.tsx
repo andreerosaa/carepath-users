@@ -6,8 +6,8 @@ type Props = {}
 const Main = (props: Props) => {
   return (
     <main>
-        <UsersSection/>
-        <UsersSection/>
+        <UsersSection headerTitle="Trending Users"/>
+        <UsersSection headerTitle="Most Active Users"/>
         <ReposSection/>
     </main>
   )

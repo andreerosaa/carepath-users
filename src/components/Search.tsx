@@ -6,7 +6,7 @@ const Search = (props: Props) => {
 
     return (
     <form className='search-form'>
-        <TbSearch className='search-icon'/>
+        <TbSearch className='search-icon' size={20}/>
         <input className='search-input' type="text" placeholder='Search'/>
     </form>
   )

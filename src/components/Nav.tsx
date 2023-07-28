@@ -1,3 +1,4 @@
+import Logo from "./Logo"
 import Search from "./Search"
 
 type Props = {}
@@ -5,10 +6,7 @@ type Props = {}
 const Nav = (props: Props) => {
   return (
     <nav className="navbar">
-        <div className="logotype">
-            <img src="logo.png"/>
-            <div className="wordmark">UPHILL</div>
-        </div>
+        <Logo/>
         <Search/>
     </nav>
   )
