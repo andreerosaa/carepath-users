@@ -8,9 +8,9 @@ const UsersSection = ({headerTitle}: Props) => {
     return (
         <section>
             <header>{headerTitle}</header>
-            {users.map((user) => {
+            {/* {users.map((user) => {
                 <UserCard user={user}/>
-            })}
+            })} */}
         </section>
     )
 }

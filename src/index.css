@@ -9,6 +9,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.main {
+  margin:3rem 11.5rem;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -22,11 +26,17 @@ body {
   display:flex;
   align-items: center;
   justify-content: center;
-  width:10%;
+  width:12%;
+}
+
+.logosymbol{
+  width:50%;
+  filter:saturate(0%)
 }
 
 .wordmark{
   font-weight:800;
+  font-size:1.3rem;
 }
 
 .search-form{
@@ -49,4 +59,5 @@ body {
   background: none;
   width:100%;
   padding: 0.4rem;
+  font-size:1rem;
 }
