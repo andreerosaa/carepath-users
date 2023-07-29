@@ -3,7 +3,8 @@ export class Repo {
     public name?:string;
     public fullName?:string;
     public htmlUrl?:string;
-    public stargazersCount?: number;
+    public description?:string;
+    public stargazersCount: number;
     public watchersCount?: number;
     public language?:string;
     public watchers?: number;

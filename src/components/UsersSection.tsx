@@ -3,16 +3,33 @@ import UserCard from "./UserCard"
 
 type Props = {
     headerTitle:string,
+    status:string,
+    error: any,
     userList?:Array<User>
 }
 
-const UsersSection = ({headerTitle, userList}: Props) => {
+const UsersSection = ({headerTitle, userList, status, error}: Props) => {
     return (
         <section>
             <header>{headerTitle}</header>
-            {/* {users.map((user) => {
-                <UserCard user={user}/>
-            })} */}
+            <div className="cards">
+            {
+                status==="success" && userList && userList.length> 0 ?
+                    userList.map((user:User) => {
+                        return (
+                                <UserCard key={headerTitle.split(" ").join("").trim().toLocaleLowerCase()+"_"+ user.id.toString()} user={user}/>
+                            )
+                    })
+                :
+                status==="loading" ?
+                <div className='w-100 d-flex text-center justify-content-center'><h2>Loading...</h2></div>
+                :
+                status==="error" ?
+                <div className='w-100 d-flex text-center justify-content-center'><h2>Error loading users: {JSON.stringify(error)}</h2></div>
+                :
+                <div className='w-100 d-flex text-center justify-content-center'><h2>Something went wrong.</h2></div>
+            }
+            </div>
         </section>
     )
 }
