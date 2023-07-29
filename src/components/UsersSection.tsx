@@ -1,11 +1,12 @@
+import { User } from "../models/User"
 import UserCard from "./UserCard"
 
 type Props = {
     headerTitle:string,
-    users:[]
+    userList?:Array<User>
 }
 
-const UsersSection = ({headerTitle, users}: Props) => {
+const UsersSection = ({headerTitle, userList}: Props) => {
     return (
         <section>
             <header>{headerTitle}</header>

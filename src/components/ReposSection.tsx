@@ -1,10 +1,15 @@
+import { Repo } from "../models/Repo"
+
 type Props = {
-  repos:[]
+  headerTitle: string,
+  repoList?:Array<Repo>
 }
 
-const ReposSection = ({repos}: Props) => {
+const ReposSection = ({headerTitle, repoList}: Props) => {
   return (
-    <section>ReposSection</section>
+    <section>
+      <header>{headerTitle}</header>
+    </section>
   )
 }
 
