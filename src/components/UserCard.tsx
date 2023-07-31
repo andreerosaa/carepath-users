@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import RepoCard from "./RepoCard";
 import { useState } from "react";
 import Button from "./Button";
+import github from '../assets/GitHub-Mark.png';
 
 type Props = {
   user:User
@@ -33,13 +34,15 @@ const UserCard = ({user}: Props) => {
     setHover(false);
   }
 
+  const img=user.avatarUrl?user.avatarUrl:github;
+
   const hoverStyles = {background: 'linear-gradient(to bottom, rgba(0,0,0,0) 100%, #ffff 100%)',color:'#ffffff'}
 
   return (
     <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} className="card p-3 mb-5"
-      style={{backgroundImage:`url(${user.avatarUrl})`}}>
+      style={{backgroundImage:`url(${img})`}}>
       <div className="color-overlay">
-          <img className="avatar" src={user.avatarUrl} alt="user avatar"/>
+          <img className="avatar" src={img} alt="user avatar"/>
           <div className="card-body" style={hover?hoverStyles:undefined}>
             <h3 className="card-name">{user.name}</h3>
             <p className="card-email">{user.email? user.email: `email not available`}</p>
