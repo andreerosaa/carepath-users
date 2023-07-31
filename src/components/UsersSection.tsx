@@ -27,7 +27,7 @@ const UsersSection = ({headerTitle, userList, status, error}: Props) => {
                 status==="error" ?
                 <div className='w-100 d-flex text-center justify-content-center'><h2>Error loading users: {JSON.stringify(error)}</h2></div>
                 :
-                <div className='w-100 d-flex text-center justify-content-center'><h2>Something went wrong.</h2></div>
+                null
             }
             </div>
         </section>

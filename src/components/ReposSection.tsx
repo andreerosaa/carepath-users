@@ -1,5 +1,5 @@
 import { Repo } from "../models/Repo"
-import RepoCard from "./RepoCard"
+import RepoGeneralCard from "./RepoGeneralCard"
 
 type Props = {
   headerTitle: string,
@@ -9,15 +9,21 @@ type Props = {
 }
 
 const ReposSection = ({headerTitle, repoList, status}: Props) => {
+
+  const colors = ["#021F59","#437BE3","#2D9ADD","#2FD2D4"];
+  let i:number = 0;
+
   return (
     <section>
       <header>{headerTitle}</header>
+      <div className="cards">
       {
         status==="success" && repoList && repoList.length> 0 ?
         repoList.map((repo:Repo) => {
+                i++;
                 return (
-                        <RepoCard key={headerTitle.split(" ").join("").trim().toLocaleLowerCase()+"_"+ repo.id.toString()} repo={repo}/>
-                    )
+                        <RepoGeneralCard key={headerTitle.split(" ").join("").trim().toLocaleLowerCase()+"_"+ repo.id.toString()} color={colors[i-1]} repo={repo}/>
+                        )
             })
         :
         status==="loading" ?
@@ -26,8 +32,9 @@ const ReposSection = ({headerTitle, repoList, status}: Props) => {
         status==="error" ?
         <div className='w-100 d-flex text-center justify-content-center'><h2>Error loading repos.</h2></div>
         :
-        <div className='w-100 d-flex text-center justify-content-center'><h2>Something went wrong.</h2></div>
+        null
       }
+      </div>
     </section>
   )
 }

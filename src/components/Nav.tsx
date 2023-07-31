@@ -1,9 +1,7 @@
 import Logo from "./Logo"
 import Search from "./Search"
 
-type Props = {}
-
-const Nav = (props: Props) => {
+const Nav = () => {
   return (
     <nav className="navbar">
         <Logo/>

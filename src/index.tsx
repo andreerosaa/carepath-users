@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { BrowserRouter } from "react-router-dom";
 
 
 const queryClient = new QueryClient();
@@ -12,7 +13,9 @@ const root = ReactDOM.createRoot(
 root.render(
   //<React.StrictMode>
   <QueryClientProvider client={queryClient}>
-    <App/>
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </QueryClientProvider>
   //</React.StrictMode>
 );

@@ -9,7 +9,7 @@ const octokit = new Octokit({
   auth: process.env.REACT_APP_OCTOKIT_TOKEN
 });
 
-const gitHubUrl:string = (process.env.REACT_APP_GH_API_BASE_URL as string);
+const gitHubUrl = (process.env.REACT_APP_GH_API_BASE_URL as string);
 
 export const fetchDataUsers = async (request:any) => {
     try{
@@ -32,7 +32,7 @@ export const fetchDataRepos = async (request:any) => {
 export const formatUsersResponse = (users:any) => {
     try{
       const usersArr: Array<User> = users.map((user: { id: number; login: string; avatar_url: string; url: string; followers_url: string; html_url: string; repos_url: string; email: string}) => {
-        return new User(user.id,user.login, user.avatar_url, user.url, user.followers_url, user.html_url, user.repos_url, `${user.login.toLocaleLowerCase()}@uphill.pt`,0, 0, "", "")
+        return new User(user.id,user.login, user.avatar_url, user.url, user.followers_url, user.html_url, user.repos_url, `${user.login.toLocaleLowerCase()}@uphill.pt`,0, 0, "", "", "","", "", false, 0, 0)
       })
       return usersArr;
     }catch(e){
