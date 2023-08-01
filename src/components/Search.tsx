@@ -11,8 +11,7 @@ const Search = (props: Props) => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    const stringSearch = searchInput;
-    setSearch(stringSearch);
+    setSearch(searchInput);
     setSearchInput("");
   }
 
