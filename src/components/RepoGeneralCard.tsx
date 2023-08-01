@@ -8,16 +8,16 @@ type Props = {
 
 const RepoGeneralCard = ({repo, color}: Props) => {
   return (
-    <div className="repo-gen-container" style={{backgroundColor:color}}>
-      <div className="repo-gen-in-cont">
-        <h3 className="repo-gen-name">{repo?.fullName}</h3>
-        <div className="stargazer-gen-count">
-          <MdStars size={18}/>
-          <p className="start-count">{repo?.stargazersCount}</p>
+      <a href={repo?.htmlUrl} target="_blank" className="repo-gen-container repo-link" style={{backgroundColor:color}}>
+        <div className="repo-gen-in-cont">
+          <h3 className="repo-gen-name">{repo?.fullName}</h3>
+          <div className="stargazer-gen-count">
+            <MdStars size={18}/>
+            <p className="start-count">{repo?.stargazersCount}</p>
+          </div>
+          <p className="repo-gen-description">{repo?.description ? repo.description : `Description not available.`}</p>
         </div>
-        <p className="repo-gen-description">{repo?.description ? repo.description : `Description not available.`}</p>
-      </div>
-    </div>
+      </a>
   )
 }
 

@@ -7,7 +7,7 @@ export class User {
     public htmlUrl?:string;
     public reposUrl?:string;
     public email?:string;
-    public followers?:number;
+    public followers:number;
     public following?:number;
     public name?:string;
     public location?:string;

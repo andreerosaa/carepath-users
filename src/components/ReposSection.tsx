@@ -22,7 +22,7 @@ const ReposSection = ({headerTitle, repoList, status}: Props) => {
         repoList.map((repo:Repo) => {
                 i++;
                 return (
-                        <RepoGeneralCard key={headerTitle.split(" ").join("").trim().toLocaleLowerCase()+"_"+ repo.id.toString()} color={colors[i-1]} repo={repo}/>
+                        <RepoGeneralCard key={repo.name ? repo?.name.trim().toLocaleLowerCase() : ""+"_"+ repo.id.toString()} color={colors[i-1]} repo={repo}/>
                         )
             })
         :

@@ -122,6 +122,7 @@ section {
   background-size: cover;
   object-fit:contain;
   color:#2e3a53;
+  margin-bottom: 2%;
 }
 
 .color-overlay{
@@ -295,4 +296,71 @@ section {
   align-items: center;
   text-decoration: none;
   color: #FFFF;
+}
+
+.avatar-user-page{
+  width: 15%;
+  border-radius:50%;
+  top: 8%;
+  left: 37.5%;
+  z-index: 10;
+}
+
+a{
+  color:#2e3a53;
+}
+
+.card-user-page {
+  width: 80%;
+  aspect-ratio: 1 / 1.1;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.7rem;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.10), 0px 7px 5px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items:top;
+  justify-content: center;
+  color:#2e3a53;
+  margin:2%;
+}
+
+.card-body-user-page{
+  height:90%;
+  border-radius: 0.7rem;
+  padding-top:7%;
+  padding-bottom:5%;
+  display:flex;
+  width:100%;
+  flex-direction:column;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.user-page{
+  display:flex;
+  justify-content:center;
+  align-items: top;
+  width:100%;
+}
+
+.up-repos{
+  margin:2%;
+}
+
+.repo-gen-container{
+  margin-bottom: 5%;
+}
+
+.up{
+  display:flex;
+  justify-content: center;
+}
+
+.repo-link{
+  text-decoration: none;
+}
+
+.nums{
+  display:flex;
+  width:70%;
 }
