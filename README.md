@@ -1,4 +1,4 @@
-# Launch UPHILL GItHub Users Dashboard
+# Launch UPHILL GitHub Users Dashboard
 
 1 - cd into the project directory
 
