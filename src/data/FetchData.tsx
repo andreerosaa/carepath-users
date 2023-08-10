@@ -111,7 +111,7 @@ export const fetchDataAllRepos = async (request:any) => {
     try{
       const usersArr: Array<User> = users.items.map((user:any) => {
 
-        return new User(user.id,user.login, user.avatar_url, user.url, user.followers_url, user.html_url, user.repos_url, `${user.login.toLocaleLowerCase()}@uphill.pt`,0, 0, "", "", "","", "", false, 0, 0)
+        return new User(user.id,user.login, user.avatar_url, user.url, user.followers_url, user.html_url, user.repos_url, `${user.login.toLocaleLowerCase()}@carepath.pt`,0, 0, "", "", "","", "", false, 0, 0)
       })
       const slicedData = usersArr.slice(0,3);
       return slicedData;

@@ -1,4 +1,4 @@
-# Launch UPHILL GitHub Users Dashboard
+# Launch CAREPATH GitHub Users Dashboard
 
 1 - cd into the project directory
 

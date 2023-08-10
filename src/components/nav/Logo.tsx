@@ -5,7 +5,7 @@ const Logo = () => {
   return (
     <Link className="logotype" to={`/`}>
         <img src={logoSymbol} alt="logosymbol" className="logosymbol"/>
-        <div className="wordmark">UPHILL</div>
+        <div className="wordmark">CAREPATH</div>
     </Link>
   )
 }
