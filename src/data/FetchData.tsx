@@ -1,4 +1,4 @@
-import { Octokit } from "octokit";
+import { Octokit } from "@octokit/rest";
 import { User } from "../models/User";
 import { Repo } from "../models/Repo";
 
