@@ -9,8 +9,7 @@ import { SearchContext } from '../context/SearchContext';
 const Main = () => {
 
   //state
-  const {setSearchEnabled} = useContext(SearchContext);
-  const {search, setSearch} = useContext(SearchContext);
+  const {setSearchEnabled, search, setSearch} = useContext(SearchContext);
 
   //get query from search state
   const queryString = encodeURIComponent(search);
@@ -38,7 +37,6 @@ const Main = () => {
 
   //Refetch data if search is set
   const Refetch = async () => {
-    console.log('refetch function')
     //refetch queries with the new search query
     try{
       await refetchPopU();
