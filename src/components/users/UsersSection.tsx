@@ -1,10 +1,10 @@
-import { User } from "../models/User"
+import { User } from "../../models/User"
 import UserCard from "./UserCard"
 
 type Props = {
     headerTitle:string,
     status:string,
-    error: any,
+    error: unknown,
     userList?:Array<User>
 }
 
@@ -27,7 +27,7 @@ const UsersSection = ({headerTitle, userList, status, error}: Props) => {
                 status==="error" ?
                 <div className='w-100 d-flex text-center justify-content-center'><h2>Error loading users: {JSON.stringify(error)}</h2></div>
                 :
-                null
+                null 
             }
             </div>
         </section>

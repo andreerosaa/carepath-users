@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { fetchUserData, fetchUserRepo } from "../data/FetchData";
 import { User } from "../models/User";
 import { useEffect, useState } from "react";
-import RepoGeneralCard from "../components/RepoGeneralCard";
+import RepoGeneralCard from "../components/repos/RepoGeneralCard";
 import { BsPerson, BsPersonFillCheck } from "react-icons/bs";
 import { GoRepo } from "react-icons/go";
 import { IoReturnDownBackOutline } from "react-icons/io5";
@@ -58,7 +58,6 @@ const UserPage = (props:Props) => {
         return b.stargazersCount - a.stargazersCount;
       }):null;
       if(repos){
-        console.log(repos)
         setReposState(repos.slice(0,3));
         setIsLoadingRepos(false);
       }
@@ -107,7 +106,7 @@ const UserPage = (props:Props) => {
                   reposState?
                   (
                     reposState.map((topRepo) => {
-                      return <RepoGeneralCard repo={topRepo ?? undefined}/>
+                      return <RepoGeneralCard key={topRepo?.id} repo={topRepo ?? undefined}/>
                     })
                   ):(
                     null

@@ -1,17 +1,16 @@
-import { Repo } from "../models/Repo"
+import { Repo } from "../../models/Repo"
 import RepoGeneralCard from "./RepoGeneralCard"
 
 type Props = {
   headerTitle: string,
   status:string,
-  error:any,
+  error:unknown,
   repoList?:Array<Repo>
 }
 
 const ReposSection = ({headerTitle, repoList, status}: Props) => {
 
   const colors = ["#021F59","#437BE3","#2D9ADD","#2FD2D4"];
-  let i:number = 0;
 
   return (
     <section>
@@ -19,8 +18,7 @@ const ReposSection = ({headerTitle, repoList, status}: Props) => {
       <div className="cards">
       {
         status==="success" && repoList && repoList.length> 0 ?
-        repoList.map((repo:Repo) => {
-                i++;
+        repoList.map((repo:Repo, i) => {
                 return (
                         <RepoGeneralCard key={repo.name ? repo?.name.trim().toLocaleLowerCase() : ""+"_"+ repo.id.toString()} color={colors[i-1]} repo={repo}/>
                         )

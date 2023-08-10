@@ -1,9 +1,7 @@
-import logoSymbol from "../assets/icon-white.png";
+import logoSymbol from "../../assets/icon-white.png";
 import { Link } from "react-router-dom"
 
-type Props = {}
-
-const Logo = (props: Props) => {
+const Logo = () => {
   return (
     <Link className="logotype" to={`/`}>
         <img src={logoSymbol} alt="logosymbol" className="logosymbol"/>

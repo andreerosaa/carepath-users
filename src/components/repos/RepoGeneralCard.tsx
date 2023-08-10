@@ -1,4 +1,4 @@
-import { Repo } from "../models/Repo"
+import { Repo } from "../../models/Repo"
 import {MdStars} from "react-icons/md";
 
 type Props = {

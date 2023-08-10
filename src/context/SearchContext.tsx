@@ -6,6 +6,8 @@ interface SearchContextValue {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   searchInput: string;
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;
+  searchEnabled: boolean;
+  setSearchEnabled: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const SearchContext = React.createContext<SearchContextValue>({
@@ -13,6 +15,8 @@ export const SearchContext = React.createContext<SearchContextValue>({
   setSearch: () => {},
   searchInput: "",
   setSearchInput: () => {},
+  searchEnabled: true,
+  setSearchEnabled: () => {},
 });
 
 //type for the children prop
@@ -23,9 +27,7 @@ interface SearchProviderProps {
 export function SearchProvider({ children }: SearchProviderProps) {
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
-
-  useEffect(() => {
-  }, [search]);
+  const [searchEnabled, setSearchEnabled] = useState(true);
 
   // Create the context value object
   const contextValue: SearchContextValue = {
@@ -33,6 +35,8 @@ export function SearchProvider({ children }: SearchProviderProps) {
     setSearch,
     searchInput,
     setSearchInput,
+    searchEnabled,
+    setSearchEnabled
   };
 
   return (

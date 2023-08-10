@@ -2,6 +2,8 @@ import { Octokit } from "octokit";
 import { User } from "../models/User";
 import { Repo } from "../models/Repo";
 
+
+// endpoints
 const usersEndpoint:string = "search/users";
 const popularReposEndpoint:string = "search/repositories";
 
@@ -9,6 +11,7 @@ const octokit = new Octokit({
   auth: process.env.REACT_APP_OCTOKIT_TOKEN
 });
 
+//gh api url
 const gitHubUrl = (process.env.REACT_APP_GH_API_BASE_URL as string);
 
 export const fetchDataUsers = async (request:any) => {
@@ -20,44 +23,44 @@ export const fetchDataUsers = async (request:any) => {
     }
   }
 
-  export const fetchDataAllUsers = async (request:any) => {
-    try{
-      const fullDataUsers:Array<User>=[];
-      let responseUsers = await octokit.request(gitHubUrl+usersEndpoint,request);
+export const fetchDataAllUsers = async (request:any) => {
+  try{
+    const fullDataUsers:Array<User>=[];
+    let responseUsers = await octokit.request(gitHubUrl+usersEndpoint,request);
 
-      while(responseUsers){
-        let formattedUserResponse = formatUsersResponse(responseUsers.data);
-        if(formattedUserResponse){
-          fullDataUsers.push(...formattedUserResponse);
-        }
-        if(responseUsers.headers.link){
-          const links = parseLinkHeader(responseUsers.headers.link);
-          const nextPage = links && links.next;
-          if(nextPage){
-            try{
-              responseUsers = await octokit.request(nextPage);
-            } catch(e){
-              console.log(e);
-            }
-          } else {
-            break;
+    while(responseUsers){
+      //if there is response format the data and push it to the result
+      let formattedUserResponse = formatUsersResponse(responseUsers.data);
+      if(formattedUserResponse){
+        fullDataUsers.push(...formattedUserResponse);
+      }
+
+      //check for headers link with pages
+      if(responseUsers.headers.link){
+        const links = parseLinkHeader(responseUsers.headers.link);
+        const nextPage = links && links.next;
+        if(nextPage){
+          try{
+            responseUsers = await octokit.request(nextPage);
+          } catch(e){
+            console.log(e);
           }
         } else {
           break;
         }
+      } else {
+        break;
       }
-      if(request.sort === "followers"){
-        var sortedfullDataUsers: any = fullDataUsers.sort((a, b) => {return a.followers - b.followers})
-      }
-      
-      console.log(sortedfullDataUsers);
-      const slicedData:Array<User> = sortedfullDataUsers.slice(0,2);
-      console.log(slicedData);
-      return slicedData;
-    }catch(e){
-      return(console.log(e));
     }
+    if(request.sort === "followers"){
+      var sortedfullDataUsers: any = fullDataUsers.sort((a, b) => {return a.followers - b.followers})
+    }
+    const slicedData:Array<User> = sortedfullDataUsers.slice(0,2);
+    return slicedData;
+  }catch(e){
+    return(console.log(e));
   }
+}
 
 export const fetchDataRepos = async (request:any) => {
   try{
@@ -97,9 +100,7 @@ export const fetchDataAllRepos = async (request:any) => {
       const sortedFullData: any = fullData.sort((a, b) => {
         return b.stargazersCount - a.stargazersCount;
       })
-      console.log(sortedFullData);
       const slicedData = sortedFullData.slice(0,3);
-      console.log(slicedData);
       return slicedData;
     }catch(e){
       return(console.log(e));
@@ -107,13 +108,12 @@ export const fetchDataAllRepos = async (request:any) => {
   }
 
   export const formatUsersResponse = (users:any) => {
-    console.log(users);
     try{
-      const usersArr: Array<User> = users.items.map((user: { id: number; login: string; avatar_url: string; url: string; followers_url: string; html_url: string; repos_url: string; email: string}) => {
+      const usersArr: Array<User> = users.items.map((user:any) => {
+
         return new User(user.id,user.login, user.avatar_url, user.url, user.followers_url, user.html_url, user.repos_url, `${user.login.toLocaleLowerCase()}@uphill.pt`,0, 0, "", "", "","", "", false, 0, 0)
       })
       const slicedData = usersArr.slice(0,3);
-      console.log(slicedData);
       return slicedData;
     }catch(e){
       return console.log(e)
@@ -123,6 +123,7 @@ export const fetchDataAllRepos = async (request:any) => {
 export const formatReposResponse = (repos:any) => {
     try{
       const reposArr: Array<Repo> = repos.items.map((repo: { id:number;name:string;full_name:string;html_url:string;stargazers_count: number;watchers_count: number;language:string;watchers: number;score:number}) => {
+
         return new Repo(repo.id, repo.name, repo.full_name, repo.html_url, repo.stargazers_count, repo.watchers_count, repo.language, repo.watchers, repo.score)
       })
 
@@ -149,6 +150,7 @@ export const formatReposResponse = (repos:any) => {
     try{
       const reponse = await octokit.request(url, request);
       const userRepoArr: Array<Repo> = reponse.data.map((repo: { id:number;name:string;full_name:string;html_url:string;stargazers_count: number;watchers_count: number;language:string;watchers: number;score:number}) => {
+        
         return new Repo(repo.id, repo.name, repo.full_name, repo.html_url, repo.stargazers_count, repo.watchers_count, repo.language, repo.watchers, repo.score)
       })
       return userRepoArr;
@@ -161,7 +163,7 @@ export const formatReposResponse = (repos:any) => {
     try {
       const repositories = await fetchUserRepo(userReposUrl);
       // Find the repository with the most stars
-      if(repositories){
+      if(repositories && repositories.length>0){
         const mostStarredRepo:Repo = repositories.reduce(
           (pV: Repo, cV: Repo): Repo => {
               return pV.stargazersCount > cV.stargazersCount ? pV : cV;
